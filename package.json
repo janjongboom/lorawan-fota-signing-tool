@@ -1,0 +1,28 @@
+{
+  "name": "lorawan-fota-signing-tool",
+  "version": "1.0.0",
+  "description": "Sign updates for Mbed OS LoRaWAN firmware updates",
+  "preferGlobal": true,
+  "main": "cli.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "bin": {
+    "lorawan-fota-signing-tool": "./cli.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/janjongboom/lorawan-fota-signing-tool.git"
+  },
+  "author": "Jan Jongboom <jan.jongboom@arm.com>",
+  "license": "Apache-2.0",
+  "bugs": {
+    "url": "https://github.com/janjongboom/lorawan-fota-signing-tool/issues"
+  },
+  "homepage": "https://github.com/janjongboom/lorawan-fota-signing-tool#readme",
+  "dependencies": {
+    "commander": "^2.19.0",
+    "jdiff-js": "^1.0.0",
+    "uuid-1345": "^0.99.6"
+  }
+}

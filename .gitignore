@@ -1,0 +1,7 @@
+node_modules/
+UpdateCerts.h
+xdot-signed-blinky-v1.bin
+xdot-signed-blinky-v1.h
+xdot-signed-blinky-v1.txt
+signed-binary.bin
+.fota-keys/
