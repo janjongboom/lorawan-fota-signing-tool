@@ -72,3 +72,9 @@ Output format needs to be either:
 
 * `plain` - Creates a plain text file, one packet per line.
 * `h` - Creates a C header file.
+
+## License
+
+* `encoded_file.py` is copyrighted by Semtech.
+
+The rest of this repository is Apache 2.0 licensed.

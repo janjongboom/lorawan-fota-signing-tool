@@ -216,21 +216,27 @@ function signDelta() {
     }
 
     // create the diff between these binaries...
+    let tempFile = Path.join(__dirname, Date.now() + '.diff');
     let diffCmd = spawnSync('node', [
         Path.join(__dirname, 'node_modules', 'jdiff-js', 'jdiff.js'),
         program.old,
-        program.new
+        program.new,
+        tempFile
     ]);
     if (diffCmd.status !== 0) {
         console.log('Creating diff failed', diffCmd.status);
         console.log(diffCmd.stdout.toString('utf-8'));
         console.log(diffCmd.stderr.toString('utf-8'));
+        try {
+            fs.unlinkSync(tempFile);
+        }
+        catch (ex) {}
         process.exit(1);
     }
 
-    let diff = diffCmd.stdout;
+    let diff = fs.readFileSync(tempFile);
 
-
+    fs.unlinkSync(tempFile);
 
     // this is diff
     let oldFileLength = require('fs').readFileSync(program.old).length;
