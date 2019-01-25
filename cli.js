@@ -216,7 +216,7 @@ function signDelta() {
     }
 
     // create the diff between these binaries...
-    let tempFile = Path.join(__dirname, Date.now() + '.diff');
+    let tempFile = Path.join(process.cwd(), Date.now() + '.diff');
     let diffCmd = spawnSync('node', [
         Path.join(__dirname, 'node_modules', 'jdiff-js', 'jdiff.js'),
         program.old,
@@ -225,12 +225,19 @@ function signDelta() {
     ]);
     if (diffCmd.status !== 0) {
         console.log('Creating diff failed', diffCmd.status);
+
         console.log(diffCmd.stdout.toString('utf-8'));
         console.log(diffCmd.stderr.toString('utf-8'));
         try {
             fs.unlinkSync(tempFile);
         }
         catch (ex) {}
+
+        if (diffCmd.status === 5) {
+            console.log('This seems like a permission error. Do you have permission to write to',
+                process.cwd(), '?');
+        }
+
         process.exit(1);
     }
 
